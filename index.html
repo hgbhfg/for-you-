@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Her - Special Moment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .image-card { transition: transform 0.4s ease, filter 0.4s ease; cursor: pointer; }
+        .image-card:hover { transform: scale(1.05); filter: brightness(1.2); }
+    </style>
+</head>
+<body>
+
+    <section class="h-screen flex flex-col justify-center items-center text-center p-6">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent">
+            Counting down to Saturday...
+        </h1>
+        <div id="countdown" class="text-2xl font-mono tracking-widest mt-4">00:00:00:00</div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass image-card rounded-2xl overflow-hidden aspect-square flex items-center justify-center border-dashed border-2 border-gray-700">
+                <span class="text-gray-500 italic">Photo 1 (Coming Soon)</span>
+            </div>
+            <div class="glass image-card rounded-2xl overflow-hidden aspect-[3/4] flex items-center justify-center border-dashed border-2 border-gray-700 md:row-span-2">
+                <span class="text-gray-500 italic">Photo 2 (Coming Soon)</span>
+            </div>
+            <div class="glass image-card rounded-2xl overflow-hidden aspect-square flex items-center justify-center border-dashed border-2 border-gray-700">
+                <span class="text-gray-500 italic">Photo 3 (Coming Soon)</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // كود الـ Countdown (عدل التاريخ ليوم السبت الجاي)
+        const targetDate = new Date('May 9, 2026 00:00:00').getTime();
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${mins}m ${secs}s`;
+        }, 1000);
+    </script>
+</body>
+</html>
